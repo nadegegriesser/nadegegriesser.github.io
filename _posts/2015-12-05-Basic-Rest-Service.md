@@ -103,6 +103,7 @@ public class PersonResource {
 
 Now we would like to do something with these resources, for example typical CRUD operations: list all the resources, return a single resource, create a resource, update or delete it...
 One good point of CXF is that you can define all the REST relevant annotations on you interface.
+
 ```java
 @Path("/persons")
 public interface PersonService {
@@ -135,6 +136,7 @@ public interface PersonService {
 ```
 
 The implementations simply uses a map to store the resources.
+
 ```java
 public class PersonServiceImpl implements PersonService {
 
@@ -178,6 +180,7 @@ public class PersonServiceImpl implements PersonService {
 ### Spring configuration
 
 To publish the service under /rest and be able to serialize / deserialize JSON messages :
+
 ```xml
 <jaxrs:server address="/rest">
     <jaxrs:serviceBeans>
@@ -194,6 +197,7 @@ To publish the service under /rest and be able to serialize / deserialize JSON m
 ### web.xml
 
 Every request is delegated to CXFServlet.
+
 ```xml
 <web-app>
 
@@ -226,6 +230,7 @@ Every request is delegated to CXFServlet.
 To run the example, we can use the Jetty plugin, no need to download and install an application server.
 
 Add this plugin configuration to the pom.xml
+
 ```xml
 <plugin>
 	<groupId>org.eclipse.jetty</groupId>
