@@ -22,7 +22,7 @@ Let us use RESTClient to send requests to the basic REST service.
 
 ### Return a resource
 
-![GET /person]({{ site.baseurl }}/images/firefox-rest-client/get-person.png "GET /person")
+![GET /person]({{ site.baseurl }}/images/firefox-rest-client/get-person-after-create.png "GET /person")
 
 ### Update a resource
 
