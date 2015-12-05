@@ -5,6 +5,8 @@ title: Basic Rest Service with Apache CXF
 
 Let's build a basic rest service, that wil serve as a basis for all the following posts.
 
+[The complete source code is available here.](https://github.com/nadegegriesser/code-samples/tree/1.0.0)
+
 Technologies used :
 
 * Java SE Development Kit 8u66
@@ -12,6 +14,49 @@ Technologies used :
 * Maven 3.3.3 (comes with Eclipse)
 * Spring Framework 4.2.3 (as Maven dependency)
 * Apache CXF 3.1.4 (as Maven dependency)
+
+
+### pom.xml
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>javax.ws.rs</groupId>
+		<artifactId>jsr311-api</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		<version>3.1.4</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>4.2.3.RELEASE</version>
+		<scope>runtime</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>4.2.3.RELEASE</version>
+		<scope>runtime</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-jaxrs</artifactId>
+		<version>1.9.0</version>
+		<scope>runtime</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-xc</artifactId>
+		<version>1.9.13</version>
+		<scope>runtime</scope>
+	</dependency>
+```
+
+### Resource
 
 The fundamental concept in REST is the resource. Let us start with that :
 
@@ -53,6 +98,8 @@ public class PersonResource {
 
 }
 ```
+
+### Service
 
 Now we would like to do something with these resources, for example typical CRUD operations: list all the resources, return a single resource, create a resource, update or delete it...
 One good point of CXF is that you can define all the REST relevant annotations on you interface.
@@ -128,9 +175,9 @@ public class PersonServiceImpl implements PersonService {
 }
 ```
 
-beans.xml
+### Spring configuration
 
-Spring configuration to publish the service under /rest and be able to serialize / deserialize JSON messages :
+To publish the service under /rest and be able to serialize / deserialize JSON messages :
 ```xml
 <jaxrs:server address="/rest">
     <jaxrs:serviceBeans>
@@ -144,7 +191,7 @@ Spring configuration to publish the service under /rest and be able to serialize
 <bean id="personService" class="de.griesser.rest.services.PersonServiceImpl" />
 ```
 
-web.xml
+### web.xml
 
 Every request is delegated to CXFServlet.
 ```xml
@@ -173,3 +220,24 @@ Every request is delegated to CXFServlet.
 
 </web-app>
 ```
+
+### Launch
+
+To run the example, we can use the Jetty plugin, no need to download and install an application server.
+
+Add this plugin configuration to the pom.xml
+```xml
+<plugin>
+	<groupId>org.eclipse.jetty</groupId>
+	<artifactId>jetty-maven-plugin</artifactId>
+	<version>9.3.6.v20151106</version>
+</plugin>
+```
+
+The following command line will let the application run under http://localhost:8080/rest
+
+```shell
+mvn clean install jetty:run-war
+```
+
+Open http://localhost:8080/rest/persons in you favorite browser, it should display [], as no resources have been created yet.
