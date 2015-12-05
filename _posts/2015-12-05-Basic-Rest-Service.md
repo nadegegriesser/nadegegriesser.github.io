@@ -86,3 +86,86 @@ public interface PersonService {
 
 }
 ```
+
+The implementations simply uses a map to store the resources.
+```java
+public class PersonServiceImpl implements PersonService {
+
+    private Map<String, PersonResource> persons;
+
+    public PersonServiceImpl() {
+        persons = new HashMap<String, PersonResource>();
+    }
+
+    public Collection<PersonResource> getAll() {
+        return persons.values();
+    }
+
+    public PersonResource get(String id) {
+        return persons.get(id);
+    }
+
+    public PersonResource create(PersonResource person) {
+        String id = UUID.randomUUID().toString();
+        person.setId(id);
+        persons.put(id, person);
+        return person;
+    }
+
+    public PersonResource update(String id, PersonResource person) {
+        if (persons.containsKey(id)) {
+            person.setId(id);
+            persons.put(id, person);
+            return person;
+        }
+        return null;
+    }
+
+    public void delete(String id) {
+        persons.remove(id);
+    }
+
+}
+```
+
+Spring configuration to publish the service under /rest and be able to serialize / deserialize JSON messages :
+```xml
+<jaxrs:server address="/rest">
+    <jaxrs:serviceBeans>
+        <ref bean="personService" />
+    </jaxrs:serviceBeans>
+    <jaxrs:providers>
+        <bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+    </jaxrs:providers>
+</jaxrs:server>
+
+<bean id="personService" class="de.griesser.rest.services.PersonServiceImpl" />
+```
+
+web.xml
+```xml
+<web-app>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>WEB-INF/beans.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>CXFServlet</servlet-name>
+        <display-name>CXF Servlet</display-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CXFServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+```
