@@ -128,6 +128,8 @@ public class PersonServiceImpl implements PersonService {
 }
 ```
 
+beans.xml
+
 Spring configuration to publish the service under /rest and be able to serialize / deserialize JSON messages :
 ```xml
 <jaxrs:server address="/rest">
@@ -143,6 +145,8 @@ Spring configuration to publish the service under /rest and be able to serialize
 ```
 
 web.xml
+
+Every request is delegated to CXFServlet.
 ```xml
 <web-app>
 
