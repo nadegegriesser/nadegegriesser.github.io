@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rest Client Browser Add-on
+title: REST Client Browser Add-on
 ---
 
 You can find REST Client Add-ons for most of the browsers. They propose a user friendly interface to generate and send REST requests. 
