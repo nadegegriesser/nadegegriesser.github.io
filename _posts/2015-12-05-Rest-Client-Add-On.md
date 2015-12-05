@@ -26,7 +26,7 @@ Let us use RESTClient to send requests to the basic REST service.
 
 ### Update a resource
 
-![PUT /person]({{ site.baseurl }}/images/firefox-rest-client/put-person.png "PUT /person")
+![PUT /person]({{ site.baseurl }}/images/firefox-rest-client/put-person.PNG "PUT /person")
 
 ### List all the resources
 
@@ -34,4 +34,4 @@ Let us use RESTClient to send requests to the basic REST service.
 
 ### Delete a resource
 
-![DELETE /person]({{ site.baseurl }}/images/firefox-rest-client/delete-person.png "DELETE /person")
+![DELETE /person]({{ site.baseurl }}/images/firefox-rest-client/delete-person.PNG "DELETE /person")
