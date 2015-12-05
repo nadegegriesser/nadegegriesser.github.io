@@ -236,7 +236,7 @@ Add this plugin configuration to the pom.xml
 
 The following command line will let the application run under http://localhost:8080/rest
 
-```shell
+```sh
 mvn clean install jetty:run-war
 ```
 
