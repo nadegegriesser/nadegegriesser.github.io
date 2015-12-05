@@ -11,4 +11,4 @@ Technologies used :
 * Eclipse IDE for Java Developers Version: Mars.1 Release (4.5.1)
 
 
-[Running samples available here](https://github.com/nadegegriesser/blog)
+[Running samples available here](https://github.com/nadegegriesser/code-samples)
