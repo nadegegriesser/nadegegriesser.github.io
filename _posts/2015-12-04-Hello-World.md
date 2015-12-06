@@ -3,7 +3,7 @@ layout: post
 title: Up and running!
 ---
 
-Let's write some web services...
+This blog will be about web services. It will focus on technical aspects and try to present short and elegant examples.
 
 Technologies used :
 
