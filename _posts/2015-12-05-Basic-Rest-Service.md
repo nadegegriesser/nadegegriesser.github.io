@@ -102,7 +102,8 @@ public class PersonResource {
 ### Service
 
 Now we would like to do something with these resources, for example typical CRUD operations: list all the resources, return a single resource, create a resource, update or delete it...
-One good point of CXF is that you can define all the REST relevant annotations on you interface.
+
+One good point of CXF is that you can define all the REST relevant annotations on you interface, as opposed to Spring REST Services where you must annotate the controller.
 
 ```java
 @Path("/persons")
