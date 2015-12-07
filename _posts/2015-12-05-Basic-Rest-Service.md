@@ -3,7 +3,7 @@ layout: post
 title: Basic REST Service with Apache CXF
 ---
 
-Let's build a basic REST service, that wil serve as a basis for all the following posts.
+Let's build a basic REST service, that will serve as a basis for all the following posts.
 
 [The complete source code is available here.](https://github.com/nadegegriesser/code-samples/tree/1.0.0)
 
