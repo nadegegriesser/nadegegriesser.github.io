@@ -1,14 +1,14 @@
 ---
 layout: post
-title: REST Client Browser Add-on
+title: REST Client Browser Add-ons
 ---
 
 You can find REST Client Add-ons for most of the browsers. They propose a user friendly interface to generate, send REST requests and analyze the response. These are useful for punctual manual testing.
 
 For example:
 
-* Firefox : "RESTClient, a debugger for RESTful web services"
-* Chrome : "Advanced REST client"
+* Firefox : RESTClient, a debugger for RESTful web services
+* Chrome : Advanced REST client
 
 Let us use RESTClient to send requests to the basic REST service.
 
