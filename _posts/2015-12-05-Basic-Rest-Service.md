@@ -19,7 +19,6 @@ Technologies used :
 ### pom.xml
 
 ```xml
-<dependencies>
 	<dependency>
 		<groupId>javax.ws.rs</groupId>
 		<artifactId>jsr311-api</artifactId>
