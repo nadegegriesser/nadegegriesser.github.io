@@ -3,7 +3,7 @@ layout: post
 title: REST Client Browser Add-on
 ---
 
-You can find REST Client Add-ons for most of the browsers. They propose a user friendly interface to generate, send REST requests and analyze the response. These are usefull for punctual manual testing.
+You can find REST Client Add-ons for most of the browsers. They propose a user friendly interface to generate, send REST requests and analyze the response. These are useful for punctual manual testing.
 
 For example:
 
