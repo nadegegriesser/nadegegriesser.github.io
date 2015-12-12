@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Integration tests with CXF client
