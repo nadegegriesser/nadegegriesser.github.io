@@ -142,6 +142,17 @@ log4j.appender.console.layout=org.apache.log4j.PatternLayout
 log4j.appender.console.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n
 ```
 
+Enable resource filtering in the pom.xml, so that the file name is set correctly.
+
+```xml
+<resources>
+    <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+    </resource>
+</resources>
+```
+
 ### output
 
 This is the output generated for a request to get a resource collection followed by a get request with an incorrect id.
