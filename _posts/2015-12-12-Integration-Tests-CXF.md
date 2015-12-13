@@ -64,21 +64,6 @@ Here is the test scenario :
 5. Delete the resource. To leave the application in the state it was before the tests.
 
 ```java
-package de.griesser.rest.services.integration;
-
-import java.util.Collection;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import de.griesser.rest.exceptions.PersonNotFound;
-import de.griesser.rest.resources.PersonResource;
-import de.griesser.rest.services.PersonService;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test-client.xml" })
 public class PersonServiceTest {
