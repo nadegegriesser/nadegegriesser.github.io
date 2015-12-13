@@ -157,7 +157,7 @@ Enable resource filtering in the pom.xml, so that the file name is set correctly
 
 This is the output generated for a request to get a resource collection followed by a get request with an incorrect id.
 
-```sh
+```text
 2015-12-11 08:05:37 INFO  PersonServiceImpl - getAll()
 2015-12-11 08:05:37 INFO  PersonServiceImpl - getAll() returned [] in 0 msecs
 2015-12-11 08:05:58 INFO  PersonServiceImpl - get(incorrectid)
