@@ -65,7 +65,8 @@ Here is the test scenario :
 
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:test-client.xml" })
+@ContextConfiguration("classpath:test-client.xml")
+@TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
 public class PersonServiceTest {
 
     private static final String LAST_NAME = "Griesser";
@@ -255,8 +256,7 @@ mvn clean install
 [INFO] Copying 1 resource
 [INFO] 
 [INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ rest ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 1 source file to C:\Users\ngriesser\git\code-samples\rest\target\test-classes
+[INFO] Nothing to compile - all classes are up to date
 [INFO] 
 [INFO] --- maven-surefire-plugin:2.19:test (default-test) @ rest ---
 [INFO] 
@@ -265,7 +265,7 @@ mvn clean install
 [INFO] Assembling webapp [rest] in [C:\Users\ngriesser\git\code-samples\rest\target\rest]
 [INFO] Processing war project
 [INFO] Copying webapp resources [C:\Users\ngriesser\git\code-samples\rest\src\main\webapp]
-[INFO] Webapp assembled in [187 msecs]
+[INFO] Webapp assembled in [207 msecs]
 [INFO] Building war: C:\Users\ngriesser\git\code-samples\rest\target\rest.war
 [INFO] WEB-INF\web.xml already added, skipping
 [INFO] 
@@ -278,7 +278,7 @@ mvn clean install
 [INFO] webAppSourceDirectory not set. Trying src\main\webapp
 [INFO] Reload Mechanic: automatic
 [INFO] Classes = C:\Users\ngriesser\git\code-samples\rest\target\classes
-[INFO] Logging initialized @6351ms
+[INFO] Logging initialized @4875ms
 [INFO] Context path = /
 [INFO] Tmp directory = C:\Users\ngriesser\git\code-samples\rest\target\tmp
 [INFO] Web defaults = org/eclipse/jetty/webapp/webdefault.xml
@@ -288,15 +288,15 @@ mvn clean install
 [INFO] jetty-9.3.6.v20151106
 [INFO] No Spring WebApplicationInitializer types detected on classpath
 [INFO] Initializing Spring root WebApplicationContext
-2015-12-13 07:47:40 INFO  ContextLoader - Root WebApplicationContext: initialization started
-2015-12-13 07:47:40 INFO  XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Sun Dec 13 07:47:40 CET 2015]; root of context hierarchy
-2015-12-13 07:47:41 INFO  XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/beans.xml]
-Dez 13, 2015 7:47:41 AM org.apache.cxf.endpoint.ServerImpl initDestination
+2015-12-13 08:36:56 INFO  ContextLoader - Root WebApplicationContext: initialization started
+2015-12-13 08:36:56 INFO  XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Sun Dec 13 08:36:56 CET 2015]; root of context hierarchy
+2015-12-13 08:36:56 INFO  XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/beans.xml]
+Dez 13, 2015 8:36:57 AM org.apache.cxf.endpoint.ServerImpl initDestination
 INFORMATION: Setting the server's publish address to be /rest
-2015-12-13 07:47:41 INFO  ContextLoader - Root WebApplicationContext: initialization completed in 1109 ms
-[INFO] Started o.e.j.m.p.JettyWebAppContext@625d9132{/,file:///C:/Users/ngriesser/git/code-samples/rest/src/main/webapp/,AVAILABLE}{file:///C:/Users/ngriesser/git/code-samples/rest/src/main/webapp/}
-[INFO] Started ServerConnector@6db328f8{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
-[INFO] Started @9488ms
+2015-12-13 08:36:57 INFO  ContextLoader - Root WebApplicationContext: initialization completed in 1032 ms
+[INFO] Started o.e.j.m.p.JettyWebAppContext@6869a3b3{/,file:///C:/Users/ngriesser/git/code-samples/rest/src/main/webapp/,AVAILABLE}{file:///C:/Users/ngriesser/git/code-samples/rest/src/main/webapp/}
+[INFO] Started ServerConnector@25ffd826{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+[INFO] Started @7900ms
 [INFO] Started Jetty Server
 [INFO] 
 [INFO] --- maven-surefire-plugin:2.19:test (integration-test) @ rest ---
@@ -304,20 +304,23 @@ INFORMATION: Setting the server's publish address to be /rest
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
-2015-12-13 07:47:43 INFO  XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [test-client.xml]
-2015-12-13 07:47:43 INFO  GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@23e028a9: startup date [Sun Dec 13 07:47:43 CET 2015]; root of context hierarchy
-2015-12-13 07:47:43 INFO  PersonServiceImpl - getAll()
-2015-12-13 07:47:43 INFO  PersonServiceImpl - getAll() returned [] in 0 msecs
-2015-12-13 07:47:44 INFO  PersonServiceImpl - create(PersonResource [id=null, lastName=Griesser, firstName=Nadege])
-2015-12-13 07:47:44 INFO  PersonServiceImpl - create(PersonResource [id=null, lastName=Griesser, firstName=Nadege]) returned PersonResource [id=5479f146-b159-4476-98ce-19045ee8cf3b, lastName=Griesser, firstName=Nadege] in 0 msecs
-2015-12-13 07:47:44 INFO  PersonServiceImpl - getAll()
-2015-12-13 07:47:44 INFO  PersonServiceImpl - getAll() returned [PersonResource [id=5479f146-b159-4476-98ce-19045ee8cf3b, lastName=Griesser, firstName=Nadege]] in 0 msecs
-2015-12-13 07:47:44 INFO  PersonServiceImpl - get(5479f146-b159-4476-98ce-19045ee8cf3b)
-2015-12-13 07:47:44 INFO  PersonServiceImpl - get(5479f146-b159-4476-98ce-19045ee8cf3b) returned PersonResource [id=5479f146-b159-4476-98ce-19045ee8cf3b, lastName=Griesser, firstName=Nadege] in 0 msecs
-2015-12-13 07:47:44 INFO  PersonServiceImpl - delete(5479f146-b159-4476-98ce-19045ee8cf3b)
-2015-12-13 07:47:44 INFO  PersonServiceImpl - delete(5479f146-b159-4476-98ce-19045ee8cf3b) returned null in 0 msecs
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.297 sec - in de.griesser.rest.services.integration.PersonServiceTest
-2015-12-13 07:47:44 INFO  GenericApplicationContext - Closing org.springframework.context.support.GenericApplicationContext@23e028a9: startup date [Sun Dec 13 07:47:43 CET 2015]; root of context hierarchy
+2015-12-13 08:36:58 INFO  DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@42e26948]
+Running de.griesser.rest.services.integration.PersonServiceTest
+2015-12-13 08:36:58 INFO  DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@589838eb]
+2015-12-13 08:36:58 INFO  XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [test-client.xml]
+2015-12-13 08:36:58 INFO  GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@2ac273d3: startup date [Sun Dec 13 08:36:58 CET 2015]; root of context hierarchy
+2015-12-13 08:36:59 INFO  PersonServiceImpl - getAll()
+2015-12-13 08:36:59 INFO  PersonServiceImpl - getAll() returned [] in 0 msecs
+2015-12-13 08:36:59 INFO  PersonServiceImpl - create(PersonResource [id=null, lastName=Griesser, firstName=Nadege])
+2015-12-13 08:36:59 INFO  PersonServiceImpl - create(PersonResource [id=null, lastName=Griesser, firstName=Nadege]) returned PersonResource [id=b2036497-ce3b-4144-ad8b-1df0118d46b7, lastName=Griesser, firstName=Nadege] in 1 msecs
+2015-12-13 08:36:59 INFO  PersonServiceImpl - getAll()
+2015-12-13 08:36:59 INFO  PersonServiceImpl - getAll() returned [PersonResource [id=b2036497-ce3b-4144-ad8b-1df0118d46b7, lastName=Griesser, firstName=Nadege]] in 0 msecs
+2015-12-13 08:36:59 INFO  PersonServiceImpl - get(b2036497-ce3b-4144-ad8b-1df0118d46b7)
+2015-12-13 08:36:59 INFO  PersonServiceImpl - get(b2036497-ce3b-4144-ad8b-1df0118d46b7) returned PersonResource [id=b2036497-ce3b-4144-ad8b-1df0118d46b7, lastName=Griesser, firstName=Nadege] in 0 msecs
+2015-12-13 08:36:59 INFO  PersonServiceImpl - delete(b2036497-ce3b-4144-ad8b-1df0118d46b7)
+2015-12-13 08:36:59 INFO  PersonServiceImpl - delete(b2036497-ce3b-4144-ad8b-1df0118d46b7) returned null in 0 msecs
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.431 sec - in de.griesser.rest.services.integration.PersonServiceTest
+2015-12-13 08:36:59 INFO  GenericApplicationContext - Closing org.springframework.context.support.GenericApplicationContext@2ac273d3: startup date [Sun Dec 13 08:36:58 CET 2015]; root of context hierarchy
 
 Results :
 
@@ -327,16 +330,17 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] --- jetty-maven-plugin:9.3.6.v20151106:stop (stop-jetty) @ rest ---
 [INFO] 
 [INFO] --- maven-install-plugin:2.4:install (default-install) @ rest ---
-[INFO] Stopped ServerConnector@6db328f8{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+[INFO] Stopped ServerConnector@25ffd826{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
 [INFO] Installing C:\Users\ngriesser\git\code-samples\rest\target\rest.war to C:\Users\ngriesser\.m2\repository\de\griesser\rest\2.2.0-SNAPSHOT\rest-2.2.0-SNAPSHOT.war
 [INFO] Installing C:\Users\ngriesser\git\code-samples\rest\pom.xml to C:\Users\ngriesser\.m2\repository\de\griesser\rest\2.2.0-SNAPSHOT\rest-2.2.0-SNAPSHOT.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 11.125 s
-[INFO] Finished at: 2015-12-13T07:47:45+01:00
-[INFO] Final Memory: 35M/458M
+[INFO] Total time: 9.621 s
+[INFO] Finished at: 2015-12-13T08:37:00+01:00
+[INFO] Final Memory: 23M/439M
 [INFO] ------------------------------------------------------------------------
+
 ```
 
 
