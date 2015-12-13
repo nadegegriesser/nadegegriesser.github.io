@@ -123,7 +123,7 @@ The following configuration write logs to a file and to the console.
 
 The format is "[time] [log level] [class name] - [message][eol]"
 
-```xml
+```properties
 # Root logger option
 log4j.rootLogger=INFO, file, console
 
@@ -157,7 +157,7 @@ Enable resource filtering in the pom.xml, so that the file name is set correctly
 
 This is the output generated for a request to get a resource collection followed by a get request with an incorrect id.
 
-```java
+```sh
 2015-12-11 08:05:37 INFO  PersonServiceImpl - getAll()
 2015-12-11 08:05:37 INFO  PersonServiceImpl - getAll() returned [] in 0 msecs
 2015-12-11 08:05:58 INFO  PersonServiceImpl - get(incorrectid)
