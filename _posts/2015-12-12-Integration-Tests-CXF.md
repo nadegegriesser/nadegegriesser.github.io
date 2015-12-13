@@ -237,7 +237,7 @@ mvn clean install
 
 ### Output
 
-```sh
+```text
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
