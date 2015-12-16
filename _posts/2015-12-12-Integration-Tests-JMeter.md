@@ -139,9 +139,13 @@ These are marked green or red depending on the assertion result.
 
 Sampler result, Request and Response data tabs provide detailed information.
 
+![View results tree]({{ site.baseurl }}/images/jmeter/14.PNG "View results tree")
+
 When an assertion fails, the request is marked red and you can expand it to get more details on the failed assertion (expected vs actual result).
 
-![View results tree]({{ site.baseurl }}/images/jmeter/14.PNG "View results tree")
+Let us stop jetty and run the tests again :
+
+![View results tree]({{ site.baseurl }}/images/jmeter/15.PNG "View results tree")
 
 
 ### Run the tests manually
