@@ -65,7 +65,7 @@ With assertions it is possible to check the status code that has been returned.
 
 #### Body =  []
 
-It is also possible to check the content of the response.
+It is also possible to check the content of the response. An empty list is expected here.
 
 ![Empty body list assertion]({{ site.baseurl }}/images/jmeter/07.PNG "Empty body list assertion")
 
@@ -111,11 +111,15 @@ This assertion checks that the list contains exactly one element that matches wi
 
 #### GET /persons/{id}
 
+The extracted id is used there to directly access the single resource.
+
 ![GET /persons/{id}]({{ site.baseurl }}/images/jmeter/12.PNG "GET /persons/{id}")
 
 #### Status code = 200
 
 #### Body = {...}
+
+Id, first name and last name are checked.
 
 ### Delete
 
