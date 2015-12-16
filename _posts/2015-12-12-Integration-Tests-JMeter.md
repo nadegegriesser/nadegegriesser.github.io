@@ -32,17 +32,29 @@ Here is the test scenario :
 
 
 ![Test plan]({{ site.baseurl }}/images/jmeter/01.PNG "Test plan")
+
 ![Thread group]({{ site.baseurl }}/images/jmeter/02.PNG "Thread group")
+
 ![Simple controller]({{ site.baseurl }}/images/jmeter/03.PNG "Simple controller")
+
 ![HTTP header]({{ site.baseurl }}/images/jmeter/04.PNG "HTTP header")
+
 ![GET /persons]({{ site.baseurl }}/images/jmeter/05.PNG "GET /persons")
+
 ![Status code assertion]({{ site.baseurl }}/images/jmeter/06.PNG "Status code assertion")
+
 ![Empty body list assertion]({{ site.baseurl }}/images/jmeter/07.PNG "Empty body list assertion")
+
 ![POST /persons]({{ site.baseurl }}/images/jmeter/08.PNG "POST /persons")
+
 ![Body single assertion]({{ site.baseurl }}/images/jmeter/09.PNG "Body single asertion")
+
 ![Id extractor]({{ site.baseurl }}/images/jmeter/10.PNG "Id extractor")
+
 ![Body list assertion]({{ site.baseurl }}/images/jmeter/11.PNG "Body list assertion")
+
 ![GET /persons/{id}]({{ site.baseurl }}/images/jmeter/12.PNG "GET /persons/{id}")
+
 ![DELETE /persons/{id}]({{ site.baseurl }}/images/jmeter/13.PNG "DELETE /persons/{id}")
 
 ![View results tree]({{ site.baseurl }}/images/jmeter/14.PNG "View results tree")
