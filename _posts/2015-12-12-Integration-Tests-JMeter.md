@@ -143,7 +143,7 @@ Sampler result, Request and Response data tabs provide detailed information.
 
 When an assertion fails, the request is marked red and you can expand it to get more details on the failed assertion (expected vs actual result).
 
-Let us stop jetty and run the tests again :
+For instance when jetty has been stopped :
 
 ![View results tree]({{ site.baseurl }}/images/jmeter/15.PNG "View results tree")
 
