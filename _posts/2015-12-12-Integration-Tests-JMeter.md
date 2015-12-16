@@ -29,35 +29,127 @@ Here is the test scenario :
 4. Get a single resource by its id. This should return the resource we created in step 2.
 5. Delete the resource. To leave the application in the state it was before the tests.
 
+We will configure some user defined variables : protocol, server, port, path. These will make it possible to run the tests on different environments or will make a change in the URL less painful.
 
+As you can see the test plan is structured like the test scenario.
 
 ![Test plan]({{ site.baseurl }}/images/jmeter/01.PNG "Test plan")
 
+The first this you have to do is to configure a thread group. JMeter is initially intended to perform last tests. In this case you may want to change the thread properties.
+
 ![Thread group]({{ site.baseurl }}/images/jmeter/02.PNG "Thread group")
+
+### Initial get all 
+
+A simple controller is used to regroup header, HTTP request and assertions.
 
 ![Simple controller]({{ site.baseurl }}/images/jmeter/03.PNG "Simple controller")
 
+#### Accept json
+
+A HTTP header manager is used to set the headers that will be sent. These can be set globally or on a specific request like here.
+
 ![HTTP header]({{ site.baseurl }}/images/jmeter/04.PNG "HTTP header")
+
+#### GET /persons
+
+This is the request to get all the resources.
 
 ![GET /persons]({{ site.baseurl }}/images/jmeter/05.PNG "GET /persons")
 
+#### Status code = 200
+
+With assertions it is possible to check the status code that has been returned.
+
 ![Status code assertion]({{ site.baseurl }}/images/jmeter/06.PNG "Status code assertion")
+
+#### Body =  []
+
+It is also possible to check the content of the response.
 
 ![Empty body list assertion]({{ site.baseurl }}/images/jmeter/07.PNG "Empty body list assertion")
 
+### Create
+
+#### Content-Type json Accept json
+
+Content-Type and Accept headers are set here.
+
+#### POST /persons
+
+First name and last name are specified in the body data.
+
 ![POST /persons]({{ site.baseurl }}/images/jmeter/08.PNG "POST /persons")
+
+#### Status code = 200
+
+#### Body = {...}
+
+This assertion checks that an id has been generated and that first name and last name are correct. 
 
 ![Body single assertion]({{ site.baseurl }}/images/jmeter/09.PNG "Body single asertion")
 
+#### Id extractor
+
+A regular expression extractor is used to get the id of the new resource.
+
 ![Id extractor]({{ site.baseurl }}/images/jmeter/10.PNG "Id extractor")
+
+### Get all after create
+
+#### GET /persons
+
+#### Status code = 200
+
+#### Body = [{...}]
+
+This assertion checks that the list contains exactly one element that matches with the newly generated resource.
 
 ![Body list assertion]({{ site.baseurl }}/images/jmeter/11.PNG "Body list assertion")
 
+### Get after create
+
+#### GET /persons/{id}
+
 ![GET /persons/{id}]({{ site.baseurl }}/images/jmeter/12.PNG "GET /persons/{id}")
+
+#### Status code = 200
+
+#### Body = {...}
+
+### Delete
+
+#### DELETE /persons/{id}
+
+This request deletes the newly created resource.
 
 ![DELETE /persons/{id}]({{ site.baseurl }}/images/jmeter/13.PNG "DELETE /persons/{id}")
 
+#### Status code = 204
+
+#### View tree result
+
+A view tree result listener nicely displays all the requests that have been fired.
+
+These are marked green or red depending on the assertion result. 
+
+Sampler result, Request and Response data tabs provide detailed information.
+
+When an assertion fails, the request is marked red and you can expand it to get more details on the failed assertion (expected vs actual result).
+
 ![View results tree]({{ site.baseurl }}/images/jmeter/14.PNG "View results tree")
+
+
+### Run the tests manually
+
+Start the web application
+
+```sh
+mvn clean install jetty:run-war
+```
+
+In JMeter select "Run" > "Start" in the top menu or click the button with a green arrow pointing to the right.
+
 
 ### Test Automatisation
 
