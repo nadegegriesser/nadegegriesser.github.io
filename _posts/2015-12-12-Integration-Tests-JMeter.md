@@ -41,19 +41,23 @@ The first this you have to do is to configure a thread group. JMeter is initiall
 
 ### Initial get all 
 
-A simple controller is used to regroup header, HTTP request and assertions.
+A simple controller is used to regroup header, HTTP request and assertions. Simply specify a meaningful name.
 
 ![Simple controller]({{ site.baseurl }}/images/jmeter/03.PNG "Simple controller")
 
-#### Accept json
+#### <a name="accept_json" />Accept json
 
 A HTTP header manager is used to set the headers that will be sent. These can be set globally or on a specific request like here.
 
+Click the Add button and type name and value.
+
 ![HTTP header]({{ site.baseurl }}/images/jmeter/04.PNG "HTTP header")
 
-#### GET /persons
+#### <a name="get_persons" />GET /persons
 
 This is the request to get all the resources.
+
+Set a meaningful name, protocol, server, port, method and path. User defined variables have been defined previously for that. Access them with ${var_name}.
 
 ![GET /persons]({{ site.baseurl }}/images/jmeter/05.PNG "GET /persons")
 
@@ -61,11 +65,15 @@ This is the request to get all the resources.
 
 With assertions it is possible to check the status code that has been returned.
 
+Select Response Code, equals and enter the expected status code.
+
 ![Status code assertion]({{ site.baseurl }}/images/jmeter/06.PNG "Status code assertion")
 
 #### Body =  []
 
 It is also possible to check the content of the response. An empty list is expected here.
+
+Select Text response, equals and enter the expected body.
 
 ![Empty body list assertion]({{ site.baseurl }}/images/jmeter/07.PNG "Empty body list assertion")
 
@@ -73,9 +81,11 @@ It is also possible to check the content of the response. An empty list is expec
 
 #### Content-Type json Accept json
 
-Content-Type and Accept headers are set here.
+Content-Type and Accept headers are set here as in [Accept json](#accept_json).
 
 #### POST /persons
+
+Protocol, server, port and path are set here as in [GET /persons](#get_persons).
 
 First name and last name are specified in the body data.
 
