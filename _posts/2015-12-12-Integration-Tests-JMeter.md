@@ -135,7 +135,7 @@ Similar to [GET /persons](#get_persons).
 
 Similar to [Status code = 200](#status_200).
 
-#### Body = [{...}]
+#### <a name="body"></a>Body = [{...}]
 
 This assertion checks that the list contains exactly one element that matches with the newly generated resource.
 
@@ -161,7 +161,7 @@ Similar to [Status code = 200](#status_200).
 
 #### Body = {...}
 
-Id, first name and last name are checked.
+Id, first name and last name are checked similar to [Body = [{...}]](#body) but without the array.
 
 ### Delete
 
