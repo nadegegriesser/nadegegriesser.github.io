@@ -87,6 +87,8 @@ Content-Type and Accept headers are set here as in [Accept json](#accept_json).
 
 Protocol, server, port and path are set here as in [GET /persons](#get_persons).
 
+Method is set to POST.
+
 First name and last name are specified in the body data.
 
 ![POST /persons]({{ site.baseurl }}/images/jmeter/08.PNG "POST /persons")
