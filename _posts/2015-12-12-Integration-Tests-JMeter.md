@@ -101,6 +101,8 @@ Similar to [Status code = 200](#status_200).
 
 This assertion checks that an id has been generated and that first name and last name are correct. 
 
+It uses a regular expression, as the id varies (Pattern Matching Rules "Matches").
+
 Writing the assertion that way makes it readable, but not flexible as far as the field order is concerned. One can use @JsonPropertyOrder annotation in the resource class to force a fixed order.
 
 ![Body single assertion]({{ site.baseurl }}/images/jmeter/09.PNG "Body single asertion")
