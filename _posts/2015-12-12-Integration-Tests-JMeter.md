@@ -61,7 +61,7 @@ Set a meaningful name, protocol, server, port, method and path. User defined var
 
 ![GET /persons]({{ site.baseurl }}/images/jmeter/05.PNG "GET /persons")
 
-#### Status code = 200
+#### <a name="status_200"></a>Status code = 200
 
 With assertions it is possible to check the status code that has been returned.
 
@@ -93,9 +93,13 @@ First name and last name are specified in the body data.
 
 #### Status code = 200
 
+Similar to [Status code = 200](#status_200).
+
 #### Body = {...}
 
 This assertion checks that an id has been generated and that first name and last name are correct. 
+
+Writing the assertion that way makes it readable, but not flexible as far as the field order is concerned. One can use @JsonPropertyOrder annotation in the resource class to force a fixed order.
 
 ![Body single assertion]({{ site.baseurl }}/images/jmeter/09.PNG "Body single asertion")
 
@@ -103,13 +107,29 @@ This assertion checks that an id has been generated and that first name and last
 
 A regular expression extractor is used to get the id of the new resource.
 
+Reference name is the variable to save the extracted result in.
+
+The regular expression contains one set of parentheses to extract one group.
+
+Template $1$ refers to the first group without performing any transformation.
+
+Match No. 1 matches the first occurence (we only have one).
+
 ![Id extractor]({{ site.baseurl }}/images/jmeter/10.PNG "Id extractor")
 
 ### Get all after create
 
+#### Accept json
+
+Similar to [Accept json](#accept_json).
+
 #### GET /persons
 
+Similar to [GET /persons](#get_persons).
+
 #### Status code = 200
+
+Similar to [Status code = 200](#status_200).
 
 #### Body = [{...}]
 
@@ -119,13 +139,19 @@ This assertion checks that the list contains exactly one element that matches wi
 
 ### Get after create
 
+#### Accept json
+
+Similar to [Accept json](#accept_json).
+
 #### GET /persons/{id}
 
-The extracted id is used there to directly access the single resource.
+The extracted id is used there to directly access the single resource. It is added at the end of the path with a / separator.
 
 ![GET /persons/{id}]({{ site.baseurl }}/images/jmeter/12.PNG "GET /persons/{id}")
 
 #### Status code = 200
+
+Similar to [Status code = 200](#status_200).
 
 #### Body = {...}
 
@@ -140,6 +166,8 @@ This request deletes the newly created resource.
 ![DELETE /persons/{id}]({{ site.baseurl }}/images/jmeter/13.PNG "DELETE /persons/{id}")
 
 #### Status code = 204
+
+Similar to [Status code = 200](#status_200) but with 204.
 
 #### View tree result
 
