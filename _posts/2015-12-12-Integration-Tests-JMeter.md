@@ -139,6 +139,8 @@ Similar to [Status code = 200](#status_200).
 
 This assertion checks that the list contains exactly one element that matches with the newly generated resource.
 
+As we know which id to expected, we can use a simple Equals check, the id variable in the pattern will be substituted when running the tests.
+
 ![Body list assertion]({{ site.baseurl }}/images/jmeter/11.PNG "Body list assertion")
 
 ### Get after create
