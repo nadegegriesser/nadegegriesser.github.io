@@ -45,7 +45,7 @@ A simple controller is used to regroup header, HTTP request and assertions. Simp
 
 ![Simple controller]({{ site.baseurl }}/images/jmeter/03.PNG "Simple controller")
 
-#### <a name="accept_json" />Accept json
+#### <a name="accept_json"></a>Accept json
 
 A HTTP header manager is used to set the headers that will be sent. These can be set globally or on a specific request like here.
 
@@ -53,7 +53,7 @@ Click the Add button and type name and value.
 
 ![HTTP header]({{ site.baseurl }}/images/jmeter/04.PNG "HTTP header")
 
-#### <a name="get_persons" />GET /persons
+#### <a name="get_persons"></a>GET /persons
 
 This is the request to get all the resources.
 
