@@ -5,7 +5,7 @@ title: Persistence layer with Spring Data JPA, EclipseLink and Derby
 
 Let's split data and logic layers. The data layer will be configured using Spring Data JPA which provides generic DAO implementation, EclipseLink as a reference implementation for the Java Persistence API and an embedded database Derby. I said configured, because there is almost no implementation.
 
-[The complete source code is available here.](https://github.com/nadegegriesser/code-samples/tree/3.0.0)
+[The complete source code is available here.](https://github.com/nadegegriesser/code-samples/tree/3.0.1)
 
 Technologies used :
 
@@ -67,6 +67,8 @@ Technologies used :
 
 ### Entity
 
+The entity is quite similar to the resource, except that the id is a Long. We will let the database take care of generating the numeric id.
+
 ```java
 @Entity
 public class PersonEntity implements Serializable {
@@ -116,7 +118,7 @@ public class PersonEntity implements Serializable {
 
 ### Repository
 
-Thanks to Spring Data JPA there is no need to implement the repository. All you need is to extend the CrudRepository interface.
+Thanks to Spring Data JPA there is no need to implement the repository. All you need is to extend the CrudRepository interface and that's it : your repository can already find, save and delete entities. 
 
 ```java
 @Transactional
@@ -125,8 +127,44 @@ public interface PersonRepository extends CrudRepository<PersonEntity, Long> {
 }
 ```
 
+Following naming conventions, you could also add query methods to look for entities with specific field values. For example :
+
+```java
+List<PersonEntity> findByLastName(String lastName);
+```
+
+
+### Persistence unit
+
+The following persistence unit will use EclipseLink for Object Relational Mapping and a in memory Derby database. The Derby database will be created under target/databases and we will let EclipseLink create the schema.
+
+Setting exclude-unlisted-classes to false, will include all the classes annotated with @Entity.
+
+Weaving is turned off, as we do not needed lazy loading, change tracking, fetch groups, and internal optimizations for the start.
+
+To see the sql statements generated, we set eclipselink.logging.level.sql to FINE.
+
+```xml
+<persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+        <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+        <property name="javax.persistence.jdbc.url"
+            value="jdbc:derby:${project.build.directory}/databases/db;create=true" />
+        <property name="eclipselink.ddl-generation" value="create-tables" />
+        <property name="eclipselink.ddl-generation.output-mode" value="database" />
+        <property name="eclipselink.weaving" value="false" />
+        <property name="eclipselink.logging.level.sql" value="FINE" />
+    </properties>
+</persistence-unit>
+```
+
+Normally this file is saved under src/main/resources/META-INF/persistence.xml but we will save it as src/main/resources/META-INF/derby-persistence.xml and enable resource filtering in the pom.xml to get the path for the database set.
 
 ### Spring configuration
+
+The following spring configuration will enable annotation based configuration on addition to the XML configuration, create an entity manager factory using the persistence unit we previously created, create a transaction manager and enable annotation driven transaction management, create the repositories annotated with @Repository within the base-package.
 
 ```xml
 <context:annotation-config />
@@ -146,20 +184,3 @@ public interface PersonRepository extends CrudRepository<PersonEntity, Long> {
 <jpa:repositories base-package="de.griesser.persistence.repositories" />
 ```
 
-### Persistence unit
-
-```xml
-<persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties>
-        <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-        <property name="javax.persistence.jdbc.url"
-            value="jdbc:derby:${project.build.directory}/databases/db;create=true" />
-        <property name="eclipselink.ddl-generation" value="create-tables" />
-        <property name="eclipselink.ddl-generation.output-mode" value="database" />
-        <property name="eclipselink.weaving" value="false" />
-        <property name="eclipselink.logging.level.sql" value="FINE" />
-    </properties>
-</persistence-unit>
-```
