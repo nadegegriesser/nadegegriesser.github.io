@@ -115,3 +115,14 @@ We register the new ExceptionMapper in the Spring configuration.
     </jaxrs:providers>
 </jaxrs:server>
 ```
+
+### Launch
+
+In the parent project containing the persistence and the rest modules run :
+
+```sh
+mvn clean install
+```
+
+This should run all the integration tests previouly defined successfully.
+
