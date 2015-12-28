@@ -3,7 +3,7 @@ layout: post
 title: Unit tests with EasyMock
 ---
 
-
+Let's write unit tests for the REST service implementation. We want to test this component isolatedly. One manner to achieve that is to use a mocking framework, such as EasyMock, Mockito or PowerMock.
 
 [The complete source code is available here.](https://github.com/nadegegriesser/code-samples/tree/3.1.0)
 
@@ -28,6 +28,15 @@ Technologies used :
 
 ### Unit test
 
+We will test all the methods of the REST service implementation. We always start with the shortest path and build up on it. You can use a code coverage tool (EclEmma, eCobertura, ...) to make sure you go through all the code.
+
+The tests are run by the EasyMockRunner. 
+
+We use annotations @Mock and @TestSubject to initialize and inject mocks.
+
+Generally speaking you first need to describe the expected behaviour of the mock (method called, expected parameters, returned answer or exception), then you put it in a replay state, after that you call the method you want to test and eventually you verify everything has been called as expected.
+
+By default, argument expectations are verified using the equals() method. EasyMock provides a lot of predefined matchers to perform other verifications (class instance, regexp, ...). We will write our own matcher for the PersonEntity class, as we do not want to rely on its implementation of the equals method.
 
 ```java
 @RunWith(EasyMockRunner.class)
@@ -247,9 +256,7 @@ public class PersonServiceImplTest {
 }
 ```
 
-### Argument matcher
-
-We do not want to rely on the equals method of the PersonEntity class, as it may only check the id. So we write our own argument matcher to check all the fields.
+Here is the argument matcher.
 
 ```java
 public class PersonEntityEquals implements IArgumentMatcher {
@@ -295,4 +302,29 @@ public class PersonEntityEquals implements IArgumentMatcher {
     }
 
 }
+```
+
+
+### Launch
+
+In the rest module run :
+
+```sh
+mvn clean install
+```
+
+### Output
+
+```text
+[INFO] --- maven-surefire-plugin:2.19:test (default-test) @ rest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running de.griesser.rest.services.PersonServiceImplTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 sec - in de.griesser.rest.services.PersonServiceImplTest
+
+Results :
+
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
 ```
