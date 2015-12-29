@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to override a status code set by CXF using a ContainerResponseFilter and name binding
+title: Status code override with ContainerResponseFilter and name binding
 ---
 
 The correct status code to return on successful resource creation is 201 Created. In this case CXF will set the response status code to 200 OK. There are many ways to override this value. One possibility is to return an instance of the Response class, so you can set headers, status and body manually. But this implies a change in the service API. We will resort to another possibility that leaves the API unchanged. 
