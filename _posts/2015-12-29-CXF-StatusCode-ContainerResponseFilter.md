@@ -117,20 +117,14 @@ One JMeter test should fail, as it expects a 200 on successful resource creation
 [debug] Starting the test @ Tue Dec 29 12:10:16 CET 2015 (1451387416809)
 [debug] Waiting for possible shutdown message on port 4445
 2015-12-29 12:10:17 INFO  PersonServiceImpl - getAll()
-[EL Fine]: sql: 2015-12-29 12:10:17.236--ServerSession(477700359)--Connection(1122980374)--SELECT ID, FIRSTNAME, LASTNAME FROM PERSONENTITY
 2015-12-29 12:10:17 INFO  PersonServiceImpl - getAll() returned [] in 0 msecs
 2015-12-29 12:10:17 INFO  PersonServiceImpl - create(PersonResource [id=null, lastName=Griesser, firstName=Nadege])
-[EL Fine]: sql: 2015-12-29 12:10:17.252--ClientSession(248805497)--Connection(1122980374)--INSERT INTO PERSONENTITY (ID, FIRSTNAME, LASTNAME) VALUES (?, ?, ?)
-	bind => [3 parameters bound]
 2015-12-29 12:10:17 INFO  PersonServiceImpl - create(PersonResource [id=null, lastName=Griesser, firstName=Nadege]) returned PersonResource [id=2, lastName=Griesser, firstName=Nadege] in 0 msecs
 2015-12-29 12:10:17 INFO  PersonServiceImpl - getAll()
-[EL Fine]: sql: 2015-12-29 12:10:17.267--ServerSession(477700359)--Connection(1122980374)--SELECT ID, FIRSTNAME, LASTNAME FROM PERSONENTITY
 2015-12-29 12:10:17 INFO  PersonServiceImpl - getAll() returned [PersonResource [id=2, lastName=Griesser, firstName=Nadege]] in 0 msecs
 2015-12-29 12:10:17 INFO  PersonServiceImpl - get(2)
 2015-12-29 12:10:17 INFO  PersonServiceImpl - get(2) returned PersonResource [id=2, lastName=Griesser, firstName=Nadege] in 0 msecs
 2015-12-29 12:10:17 INFO  PersonServiceImpl - delete(2)
-[EL Fine]: sql: 2015-12-29 12:10:17.392--ClientSession(1676173917)--Connection(1122980374)--DELETE FROM PERSONENTITY WHERE (ID = ?)
-	bind => [1 parameter bound]
 2015-12-29 12:10:17 INFO  PersonServiceImpl - delete(2) returned null in 0 msecs
 [debug] summary =      5 in     1s =    9,2/s Avg:    37 Min:     6 Max:   116 Err:     1 (20,00%)
 [debug] Tidying up ...    @ Tue Dec 29 12:10:17 CET 2015 (1451387417392)
